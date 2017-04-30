@@ -9,9 +9,8 @@
   "author": "Shane Osbourne",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "*",
-    "gulp-sass": "*",
     "browser-sync": "*",
-    "gulp-autoprefixer": "*"
+    "gulp-autoprefixer": "*",
+    "gulp-sass": "*"
   }
 }
