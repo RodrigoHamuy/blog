@@ -28,12 +28,17 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
 /**
  * Wait for jekyll-build, then launch the Server
  */
-gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
-    browserSync({
-        server: {
-            baseDir: '_site'
-        }
-    });
+ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
+   browserSync({
+     open: false,
+     server: {
+       baseDir: '_site'
+     },
+     port: 3000,
+     ui: {
+       port: 3001
+     }
+   });
 });
 
 /**
@@ -57,7 +62,9 @@ gulp.task('sass', function () {
  */
 gulp.task('watch', function () {
     gulp.watch('_scss/*.scss', ['sass']);
-    gulp.watch(['*.html', '_layouts/*.html', '_posts/*'], ['jekyll-rebuild']);
+    gulp.watch([
+      '_includes/**', '_layouts/**', '_posts/**', '_sass/**', '_config.yml'
+    ], ['jekyll-rebuild']);
 });
 
 /**
