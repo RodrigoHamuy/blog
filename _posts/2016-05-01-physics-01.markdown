@@ -1,25 +1,38 @@
 ---
 layout: post
 title:  "Physics 0.1"
-date:   2017-04-30 22:30:08 +0000
 categories: physics
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+## Bullet API Snippets
 
-Jekyll also offers powerful support for code snippets:
+Consider the following piece of a source code creating a chain from capsule shapes and point-to-point constraints.
+The chain’s initial position is horizontal (X direction) and one end is ﬁxed with another point-to-point constraint.
+Some symbols in the code are replaced with placeholders `???`:
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+```c++
+// Creating a horizontal chain
+btScalar mass = btScalar(1.);
+btTransform trans;
+trans.setIdentity();
+btCollisionShape* shape = new btCapsuleShapeX( btScalar(0.2), btScalar(0.6) );
+m_collisionShapes.push_back(???); // 3% of marks
+btVector3 linkEnd(1, 0, 0);
+btVector3 anchor(0, 10, -5);
+const int numLinks = 20;
+btRigidBody* link[???]; // 3% of marks
+for (int i = 0; i < numLinks; i++) {
+  trans.setOrigin(anchor + (i+0.5)* ???); // 3% of marks
+  link[i] = localCreateRigidBody(???, ???, ???); // 9% of marks
+  btVector3 leftEnd = ???; // 3% of marks
+  btVector3 rightEnd = ???; // 3% of marks
+  m_dynamicsWorld->addConstraint(
+    new btPoint2PointConstraint(???, ???), true); // 6% of marks
+  for (int i = 1; i < numLinks; i++)
+  m_dynamicsWorld->addConstraint(
+    new btPoint2PointConstraint(???, ???, ???, ???), // 10% of marks
+    true
+  );
+}
+```
+*From ENM377-2016 - 01*
