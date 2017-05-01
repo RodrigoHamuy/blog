@@ -1,10 +1,22 @@
 ---
 layout: post
-title:  "Physics 0.1"
+title:  "Physics"
 categories: physics
 ---
 
-## Bullet API Snippets
+## Introduction to Game physics
+1. Explain the role that physics and AI play in development.
+1. Evaluate the structure and trade-offs in the design and use of
+game physics.
+1. Program some physics using the Bullet physics engine.
+1. Evaluate the structure and trade-offs in the design and use of artiﬁcial intelligence in games.
+1. Apply a range of physics and AI methods in the development of
+your games.
+
+## INM377 2016
+### Question 1
+This question deals with interactions between rigid bodies in the Bullet physics
+engine and with models of ﬂexible bodies.
 
 Consider the following piece of a source code creating a chain from capsule shapes and point-to-point constraints.
 The chain’s initial position is horizontal (X direction) and one end is ﬁxed with another point-to-point constraint.
